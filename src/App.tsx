@@ -3,6 +3,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { Home } from './screens/Home';
 import { RootParamList } from './nav/RootParam';
+import { Dashboard } from './screens/Dashboard';
 
 const Stack = createNativeStackNavigator<RootParamList>()
 
@@ -12,6 +13,7 @@ function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
           <Stack.Screen name='Home' component={Home} />
+          <Stack.Screen name='Dashboard' component={Dashboard} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
