@@ -2,8 +2,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { Home } from './screens/Home';
+import { RootParamList } from './nav/RootParam';
 
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator<RootParamList>()
 
 function App() {
   return (
