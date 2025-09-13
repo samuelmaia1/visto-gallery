@@ -29,5 +29,10 @@ export const style = StyleSheet.create({
     },
     currentContainer: {
         backgroundColor: variables.colors.black,
+    },
+    closeCameraButton: {
+        position: 'absolute',
+        top: 50,
+        right: 30
     }
 })

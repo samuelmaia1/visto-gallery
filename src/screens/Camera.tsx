@@ -35,6 +35,10 @@ export function CameraScreen({navigation, route}: CameraScreenProps) {
                 <Image source={require('../assets/images/white-camera.png')} style={style.camImage}/>
             </TouchableOpacity>
 
+            <TouchableOpacity style={style.closeCameraButton} onPress={() => navigation.navigate('Dashboard')}>
+                <Image source={require('../assets/images/fechar.png')} style={style.camImage}/>
+            </TouchableOpacity>
+
         </View>
     )
 }

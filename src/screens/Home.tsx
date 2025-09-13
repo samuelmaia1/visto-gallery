@@ -10,7 +10,7 @@ type HomeProps = HomeScreenProps & Props
 export function Home({navigation, route}: HomeProps) {
     return (
         <ImageBackground
-            source={require('../assets/images/background.png')}
+            source={require('../assets/images/background-dark.png')}
             style={style.background}
         >
             <GradientText 
