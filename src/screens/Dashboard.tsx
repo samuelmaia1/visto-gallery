@@ -1,4 +1,4 @@
-import { TouchableOpacity, View, Text } from "react-native";
+import {  View } from "react-native";
 import { DashboardScreenProps } from "../nav/RootParam";
 import { Header } from "../components/Header";
 import { dashboardStyle } from "../styles/DashboardStyle";
