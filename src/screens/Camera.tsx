@@ -1,18 +1,21 @@
-import { useRef } from "react";
-import { View, ActivityIndicator, StyleSheet, TouchableOpacity, Text, Image, Alert } from "react-native";
+import { useRef, useState } from "react";
+import { View, ActivityIndicator, StyleSheet, TouchableOpacity,  Image } from "react-native";
 import { Camera, useCameraDevice } from "react-native-vision-camera";
 import { CameraScreenProps } from "../nav/RootParam";
 import { style } from "../styles/CameraStyle";
 import { variables } from "../styles/GlobalStyle";
-
 
 export function CameraScreen({navigation, route}: CameraScreenProps) {
 
     const device = useCameraDevice('back')
     const camera = useRef<Camera>(null)
 
-    const takeImage = async () => {
+    const [photoPath, setPhotoPath] = useState('')
+
+    const takePhoto = async () => {
         const photo = await camera?.current?.takePhoto()
+        if (photo)
+            setPhotoPath(photo.path)
     }
 
     return (
@@ -23,7 +26,12 @@ export function CameraScreen({navigation, route}: CameraScreenProps) {
                 <Camera ref={camera} isActive={true} device={device} style={StyleSheet.absoluteFill} photo={true} />
             }
 
-            <TouchableOpacity style={style.takePhotoButton} onPress={() => takeImage()}>
+            {photoPath ? 
+                <Image source={{uri: `file://${photoPath}`}} style={style.current}/> : 
+                <View style={[style.current, style.currentContainer]}></View>
+            }
+
+            <TouchableOpacity style={style.takePhotoButton} onPress={() => takePhoto()}>
                 <Image source={require('../assets/images/white-camera.png')} style={style.camImage}/>
             </TouchableOpacity>
 

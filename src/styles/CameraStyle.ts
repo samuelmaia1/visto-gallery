@@ -6,7 +6,7 @@ export const style = StyleSheet.create({
     takePhotoButton: {
         position: 'absolute',
         bottom: 50,
-        backgroundColor: variables.colors.orange,
+        backgroundColor: 'darkgreen',
         alignSelf: 'center',
         padding: 20,
         borderRadius: '50%',
@@ -16,5 +16,18 @@ export const style = StyleSheet.create({
     camImage: {
         width: 20,
         height: 20
+    },
+    current: {
+        width: 60,
+        height: 60,
+        borderRadius: 8,
+        position: 'absolute',
+        bottom: 50,
+        left: 30,
+        borderWidth: 2,
+        borderColor: variables.colors.white
+    },
+    currentContainer: {
+        backgroundColor: variables.colors.black,
     }
 })
