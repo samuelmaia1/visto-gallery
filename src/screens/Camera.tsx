@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { View, ActivityIndicator, StyleSheet, TouchableOpacity,  Image } from "react-native";
 import { Camera, useCameraDevice } from "react-native-vision-camera";
 import { CameraScreenProps } from "../nav/RootParam";
-import { style } from "../styles/CameraStyle";
+import { cameraStyle } from "../styles/CameraStyle";
 import { variables } from "../styles/GlobalStyle";
 
 export function CameraScreen({navigation, route}: CameraScreenProps) {
@@ -27,16 +27,16 @@ export function CameraScreen({navigation, route}: CameraScreenProps) {
             }
 
             {photoPath ? 
-                <Image source={{uri: `file://${photoPath}`}} style={style.current}/> : 
-                <View style={[style.current, style.currentContainer]}></View>
+                <Image source={{uri: `file://${photoPath}`}} style={cameraStyle.current}/> : 
+                <View style={[cameraStyle.current, cameraStyle.currentContainer]}></View>
             }
 
-            <TouchableOpacity style={style.takePhotoButton} onPress={() => takePhoto()}>
-                <Image source={require('../assets/images/white-camera.png')} style={style.camImage}/>
+            <TouchableOpacity style={cameraStyle.takePhotoButton} onPress={() => takePhoto()}>
+                <Image source={require('../assets/images/white-camera.png')} style={cameraStyle.camImage}/>
             </TouchableOpacity>
 
-            <TouchableOpacity style={style.closeCameraButton} onPress={() => navigation.navigate('Dashboard')}>
-                <Image source={require('../assets/images/fechar.png')} style={style.camImage}/>
+            <TouchableOpacity style={cameraStyle.closeCameraButton} onPress={() => navigation.navigate('Dashboard')}>
+                <Image source={require('../assets/images/fechar.png')} style={cameraStyle.camImage}/>
             </TouchableOpacity>
 
         </View>

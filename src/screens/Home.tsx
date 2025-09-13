@@ -1,6 +1,6 @@
 import { Text, View, ImageBackground, TouchableOpacity, Alert, Image } from "react-native";
 import { HomeScreenProps } from "../nav/RootParam";
-import { style } from "../styles/HomeStyle";
+import { homeStyle } from "../styles/HomeStyle";
 import { GradientText } from "../components/GradientText";
 
 type Props = {}
@@ -11,23 +11,23 @@ export function Home({navigation, route}: HomeProps) {
     return (
         <ImageBackground
             source={require('../assets/images/background-dark.png')}
-            style={style.background}
+            style={homeStyle.background}
         >
             <GradientText 
                 text="Visto Gallery"
                 colors={['#C41C1C', '#B52828']}
-                style={style.gradient}
+                style={homeStyle.gradient}
             />
 
-            <View style={style.buttonsContainer}>
-                <TouchableOpacity onPress={() => {navigation.navigate('Dashboard')}} style={style.button}>
+            <View style={homeStyle.buttonsContainer}>
+                <TouchableOpacity onPress={() => {navigation.navigate('Dashboard')}} style={homeStyle.button}>
                     <Image source={require('../assets/images/white-camera.png')}/>
-                    <Text style={style.buttonText}>Minhas fotos</Text>
+                    <Text style={homeStyle.buttonText}>Minhas fotos</Text>
                 </TouchableOpacity>
                 
-                <TouchableOpacity onPress={() => {navigation.navigate('Dashboard')}} style={style.button}>
+                <TouchableOpacity onPress={() => {navigation.navigate('Dashboard')}} style={homeStyle.button}>
                     <Image source={require('../assets/images/white-files.png')}/>
-                    <Text style={style.buttonText}>Album de fotos</Text>
+                    <Text style={homeStyle.buttonText}>Album de fotos</Text>
                 </TouchableOpacity>
             </View>
         </ImageBackground>

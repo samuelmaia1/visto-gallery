@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { variables } from "./GlobalStyle";
 
-export const style = StyleSheet.create({
+export const homeStyle = StyleSheet.create({
     background: {
         flex: 1,
         justifyContent: 'space-around'

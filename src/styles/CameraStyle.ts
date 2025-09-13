@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { variables } from "./GlobalStyle";
 
 
-export const style = StyleSheet.create({
+export const cameraStyle = StyleSheet.create({
     takePhotoButton: {
         position: 'absolute',
         bottom: 50,
