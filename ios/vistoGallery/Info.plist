@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Precisamos acessar a câmera para tirar fotos.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Precisamos acessar o microfone para vídeos com áudio.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Precisamos da sua localização para adicionar aos dados das fotos</string>
+
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -51,6 +58,9 @@
 	<array>
 		<string>Inter-VariableFont_opsz,wght.ttf</string>
 		<string>Montserrat-Regular.ttf</string>
+		<string>Inter_24pt-Regular.ttf</string>
+		<string>MontserratAlternates-Regular.ttf</string>
+		<string>MontserratAlternates-SemiBold.ttf</string>
 	</array>
 </dict>
 </plist>
