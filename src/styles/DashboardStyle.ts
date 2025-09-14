@@ -7,5 +7,12 @@ export const dashboardStyle = StyleSheet.create({
         paddingTop: 50,
         flex: 1,
         backgroundColor: variables.colors.white
+    },
+    selectedStep: {
+        fontWeight: '700',
+        color: variables.colors.orange
+    },
+    unselectedStep: {
+        color: 'gray'
     }
 })

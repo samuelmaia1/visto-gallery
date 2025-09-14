@@ -1,7 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { SavePhotoFile, PhotoData, NewPhotoData } from "../interfaces/PhotoData";
-import RFNS from 'react-native-fs'
-import { v4 as uuid } from "uuid";
+import RFNS from 'react-native-fs';
 
 export async function savePhoto({path, album}: SavePhotoFile): Promise<NewPhotoData> {
     const destinyPath = `${RFNS.DocumentDirectoryPath}/visto/gallery/${album}`
@@ -17,14 +16,7 @@ export async function savePhoto({path, album}: SavePhotoFile): Promise<NewPhotoD
 
     console.log('Novo path: ', newPath)
 
-    try {
-        await RFNS.moveFile(path, newPath)
-        console.log('Arquivo movido para:', newPath)
-    } catch (error) {
-        console.error("Erro ao mover arquivo:", error)
-    }
-    
-    console.log(`${destinyPath}/${fileName}`)
+    await RFNS.moveFile(path, newPath)
 
     return {
         path: `${destinyPath}/${fileName}`,
