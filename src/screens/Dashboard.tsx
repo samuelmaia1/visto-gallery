@@ -1,4 +1,4 @@
-import {  FlatList, Image, Text, Touchable, TouchableOpacity, View } from "react-native";
+import {  Text, TouchableOpacity, View } from "react-native";
 import { DashboardScreenProps } from "../nav/RootParam";
 import { Header } from "../components/Header";
 import { dashboardStyle } from "../styles/DashboardStyle";
@@ -6,8 +6,8 @@ import { useCallback, useState } from "react";
 import { PhotoData } from "../interfaces/PhotoData";
 import { getAllPhotos } from "../services/PhotoService";
 import { useFocusEffect } from "@react-navigation/native";
-import { ImageItem } from "../components/ImageItem";
 import { ImageList } from "../components/ImageList";
+import { ControllButtons } from "../components/ControllButtons/ControllButtons";
 
 type Props = {}
 
@@ -17,6 +17,7 @@ export function Dashboard({navigation, route}: DashboardProps) {
 
     const [photos, setPhotos] = useState<PhotoData[]>([])
     const [step, setStep] = useState('photos')
+    const [selectedPhotos, setSelectedPhotos] = useState<string[]>([])
 
     useFocusEffect(
         useCallback(() => {
@@ -27,6 +28,14 @@ export function Dashboard({navigation, route}: DashboardProps) {
         loadPhotos()
         }, [])
     )
+
+    const includePhoto = (id: string) => {
+        setSelectedPhotos((prev) => [...prev, id])
+    }
+
+    const removePhoto = (id: string) => {
+        setSelectedPhotos((prev) => prev.filter(photo => photo !== id))
+    }
 
     return (
         <View style={dashboardStyle.container}>
@@ -54,7 +63,9 @@ export function Dashboard({navigation, route}: DashboardProps) {
                 </TouchableOpacity>
             </View>
 
-            <ImageList data={photos}/>
+            {step === 'photos' && <ImageList data={photos} includePhoto={includePhoto} removePhoto={removePhoto}/>}
+
+            {selectedPhotos.length > 0 && <ControllButtons selectedPhotos={selectedPhotos}/>}
         </View> 
     )
 }

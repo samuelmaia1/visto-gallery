@@ -1,15 +1,25 @@
 import { StyleSheet } from "react-native";
+import { variables } from "./GlobalStyle";
 
 
-export const ImageItemStyle = StyleSheet.create({
+export const imageItemStyle = StyleSheet.create({
     container: {
         borderWidth: 2,
         borderColor: 'transparent',
-        borderRadius: 8
+        borderRadius: 10,
+        overflow: 'hidden'
     },
     image: {
-        borderRadius: 8,
         width: 100,
         height: 100
+    },
+    selected: {
+        borderWidth: 2,
+        borderColor: variables.colors.orange
+    },
+    icon: {
+        position: 'absolute',
+        bottom: 10,
+        left: 5
     }
 })

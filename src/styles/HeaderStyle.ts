@@ -5,6 +5,6 @@ export const headerStyle = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 30,
-        marginBottom: 50
+        marginBottom: 30
     }
 })

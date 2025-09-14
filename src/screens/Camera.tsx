@@ -25,10 +25,8 @@ export function CameraScreen({navigation, route}: CameraScreenProps) {
         const {album} = route.params
 
         if (photo) {
-            setPhotoPath(photo.path)
-
-            console.log(photo.path)
             const newPhoto: NewPhotoData = await savePhoto({path: photo?.path, album})
+            setPhotoPath(newPhoto.path)
 
             const coords = await getLocation()
 

@@ -12,11 +12,11 @@ export function Header() {
     return (
         <View style={headerStyle.container}>
             <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-                <Image source={require('../assets/images/home-orange-24px.png')}/>
+                <Image source={require('../assets/images/home-orange.png')}/>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('Camera', {album: 'meu-album'})}>
-                <Image source={require('../assets/images/camera-orange-24px.png')}/>
+                <Image source={require('../assets/images/camera-orange.png')}/>
             </TouchableOpacity>
 
         </View>

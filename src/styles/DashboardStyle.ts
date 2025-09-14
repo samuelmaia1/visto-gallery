@@ -4,7 +4,7 @@ import { variables } from "./GlobalStyle";
 
 export const dashboardStyle = StyleSheet.create({
     container: {
-        paddingTop: 50,
+        paddingVertical: 50,
         flex: 1,
         backgroundColor: variables.colors.white
     },
