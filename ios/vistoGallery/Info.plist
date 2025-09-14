@@ -6,6 +6,9 @@
 	<string>Precisamos acessar a câmera para tirar fotos.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Precisamos acessar o microfone para vídeos com áudio.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Precisamos da sua localização para adicionar aos dados das fotos</string>
+
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>

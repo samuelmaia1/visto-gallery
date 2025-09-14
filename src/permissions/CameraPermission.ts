@@ -1,4 +1,4 @@
-import { Alert, Linking, Platform } from "react-native";
+import { Alert, Linking } from "react-native";
 import { Camera } from "react-native-vision-camera";
 
 export async function requestCameraPermission() {
@@ -10,7 +10,7 @@ export async function requestCameraPermission() {
     if (response === 'denied') {
         Alert.alert(
             'Permissão negada',
-            'Você precisa permitir o acesso à câmera nas configurações do app para usar essa funcionalidade.',
+            'Você precisa permitir o acesso à câmera nas configurações do app para tirar fotos e gravar vídeos.',
             [
                 {
                     text: 'Abrir configurações.',
@@ -29,13 +29,10 @@ export async function requestCameraPermission() {
     return false
 }
 
-export async function getCameraPermissionStatus() {
-    return Camera.getCameraPermissionStatus();
+export async function getCameraPermissionStatus(): Promise<boolean> {
+    return Camera.getCameraPermissionStatus() === 'granted';
 }
 
-function openAppConfig() {
-    if (Platform.OS === 'ios')
-        Linking.openURL('app-settings')
-    else 
-        Linking.openSettings()
+export function openAppConfig() {
+    Linking.openSettings()
 }
