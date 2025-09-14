@@ -15,7 +15,7 @@ export function Header() {
                 <Image source={require('../assets/images/home-orange-24px.png')}/>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate('Camera')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Camera', {album: 'meu-album'})}>
                 <Image source={require('../assets/images/camera-orange-24px.png')}/>
             </TouchableOpacity>
 

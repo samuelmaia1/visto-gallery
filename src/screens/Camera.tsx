@@ -2,10 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { View, ActivityIndicator, StyleSheet, TouchableOpacity,  Image, Alert } from "react-native";
 import { Camera, useCameraDevice } from "react-native-vision-camera";
 import { CameraScreenProps } from "../nav/RootParam";
+import { getGeoLocationPermissionStatus, requestGeoLocationPermission } from "../permissions/GeoLocationPermission";
+import { getCameraPermissionStatus, requestCameraPermission } from "../permissions/CameraPermission";
+import { NewPhotoData } from "../interfaces/PhotoData";
+import { savePhoto, savePhotoData } from "../services/PhotoService";
+import { getLocation } from "../services/LocationService";
+import { dateToPattern, getHourAndMinuteByDate } from "../format/format";
 import { cameraStyle } from "../styles/CameraStyle";
 import { variables } from "../styles/GlobalStyle";
-import { getGeoLocationPermissionStatus, openAppConfig, requestGeoLocationPermission } from "../permissions/GeoLocationPermission";
-import { getCameraPermissionStatus, requestCameraPermission } from "../permissions/CameraPermission";
 
 export function CameraScreen({navigation, route}: CameraScreenProps) {
 
@@ -17,8 +21,29 @@ export function CameraScreen({navigation, route}: CameraScreenProps) {
 
     const takePhoto = async () => {
         const photo = await camera?.current?.takePhoto()
-        if (photo)
+
+        const {album} = route.params
+
+        if (photo) {
             setPhotoPath(photo.path)
+
+            console.log(photo.path)
+            const newPhoto: NewPhotoData = await savePhoto({path: photo?.path, album})
+
+            const coords = await getLocation()
+
+            const date = new Date()
+
+            await savePhotoData({
+                album,
+                id: newPhoto.id,
+                uri: `file://${newPhoto.path}`,
+                latitude: coords.latitude,
+                longitude: coords.longitude,
+                date: dateToPattern(date),
+                hour: getHourAndMinuteByDate(date)
+            })
+        }
     }
 
     useEffect(() => {

@@ -5,15 +5,30 @@ import { v4 as uuid } from "uuid";
 
 export async function savePhoto({path, album}: SavePhotoFile): Promise<NewPhotoData> {
     const destinyPath = `${RFNS.DocumentDirectoryPath}/visto/gallery/${album}`
-    await RFNS.mkdir(destinyPath)
+    
+    if (!(await RFNS.exists(destinyPath)))
+        await RFNS.mkdir(destinyPath)
 
-    const id = `${uuid()}.png`
+    console.log('Destino:', destinyPath)
+    console.log('Origem:', path)
 
-    await RFNS.moveFile(path, `${destinyPath}/${id}`)
+    const fileName = `${Date.now()}.jpg`
+    const newPath = `${destinyPath}/${fileName}`
+
+    console.log('Novo path: ', newPath)
+
+    try {
+        await RFNS.moveFile(path, newPath)
+        console.log('Arquivo movido para:', newPath)
+    } catch (error) {
+        console.error("Erro ao mover arquivo:", error)
+    }
+    
+    console.log(`${destinyPath}/${fileName}`)
 
     return {
-        path: `${destinyPath}/${id}`,
-        id
+        path: `${destinyPath}/${fileName}`,
+        id: fileName
     }
 }
 

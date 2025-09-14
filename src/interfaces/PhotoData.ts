@@ -1,9 +1,10 @@
 export interface PhotoData{
     id: string,
     uri: string,
-    moment: Date,
-    longitude: string,
-    latitude: string,
+    date: string,
+    hour: string,
+    longitude: number,
+    latitude: number,
     album: string
 }
 
