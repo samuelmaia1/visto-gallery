@@ -1,6 +1,5 @@
 import { View , TouchableOpacity, Text, Image } from "react-native";
 import { style } from "./ControllButtonsStyle";
-import Animated, { SlideInUp } from "react-native-reanimated";
 
 interface ControllButtonsProps {
     selectedPhotos: string[]
@@ -11,7 +10,6 @@ export function ControllButtons({selectedPhotos}: ControllButtonsProps) {
         <View 
             style={[style.container]}
         >
-
             <TouchableOpacity style={[style.button, style.sendButton]}>
                 <Image source={require('../../assets/images/send-icon.png')}/> 
                 <Text style={style.buttonText}>Enviar para álbum</Text>

@@ -5,7 +5,9 @@ export interface PhotoData{
     hour: string,
     longitude: number,
     latitude: number,
-    album: string
+    album: string,
+    height: number,
+    width: number
 }
 
 export interface SavePhotoFile{

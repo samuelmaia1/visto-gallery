@@ -25,7 +25,9 @@ export function CameraScreen({navigation, route}: CameraScreenProps) {
         const {album} = route.params
 
         if (photo) {
-            const newPhoto: NewPhotoData = await savePhoto({path: photo?.path, album})
+            const {path, height, width} = photo
+
+            const newPhoto: NewPhotoData = await savePhoto({path, album})
             setPhotoPath(newPhoto.path)
 
             const coords = await getLocation()
@@ -39,7 +41,9 @@ export function CameraScreen({navigation, route}: CameraScreenProps) {
                 latitude: coords.latitude,
                 longitude: coords.longitude,
                 date: dateToPattern(date),
-                hour: getHourAndMinuteByDate(date)
+                hour: getHourAndMinuteByDate(date),
+                height,
+                width
             })
         }
     }

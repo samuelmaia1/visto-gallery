@@ -1,7 +1,7 @@
 import { FlatList, View } from "react-native";
-import { PhotoData } from "../interfaces/PhotoData";
-import { ImageItem } from "./ImageItem";
-import { imageListStyle } from "../styles/ImageListStyle";
+import { PhotoData } from "../../interfaces/PhotoData";
+import { ImageItem } from "../ImageItem/ImageItem";
+import { styles } from "./ImageListStyle";
 
 interface ImageListProps{
     data: PhotoData[],
@@ -12,7 +12,7 @@ interface ImageListProps{
 export function ImageList({data, includePhoto, removePhoto}: ImageListProps) {
     return (
         <FlatList
-            style={imageListStyle.container}
+            style={styles.container}
             data={data}
             keyExtractor={(item) => item.id}
             renderItem={({item}) => <ImageItem uri={item.uri} includePhoto={includePhoto} removePhoto={removePhoto} photo={item}/>}

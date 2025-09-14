@@ -1,13 +1,9 @@
 import { Text, View, ImageBackground, TouchableOpacity, Alert, Image } from "react-native";
 import { HomeScreenProps } from "../nav/RootParam";
 import { homeStyle } from "../styles/HomeStyle";
-import { GradientText } from "../components/GradientText";
+import { GradientText } from "../components/GradientText/GradientText";
 
-type Props = {}
-
-type HomeProps = HomeScreenProps & Props
-
-export function Home({navigation, route}: HomeProps) {
+export function Home({navigation, route}: HomeScreenProps) {
     return (
         <ImageBackground
             source={require('../assets/images/background-dark.png')}

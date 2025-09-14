@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const imageListStyle = StyleSheet.create({
+export const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 30,
         marginTop: 20,

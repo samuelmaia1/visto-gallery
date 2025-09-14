@@ -1,8 +1,7 @@
 import { StyleSheet } from "react-native";
-import { variables } from "./GlobalStyle";
+import { variables } from "../../styles/GlobalStyle";
 
-
-export const imageItemStyle = StyleSheet.create({
+export const styles = StyleSheet.create({
     container: {
         borderWidth: 2,
         borderColor: 'transparent',

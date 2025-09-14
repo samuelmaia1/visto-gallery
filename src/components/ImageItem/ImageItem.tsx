@@ -1,10 +1,10 @@
 import { Image, View, Pressable } from "react-native"
-import { imageItemStyle } from "../styles/ImageItemStyle"
-import { PhotoData } from "../interfaces/PhotoData"
+import { styles } from "./ImageItemStyle"
+import { PhotoData } from "../../interfaces/PhotoData"
 import { useState } from "react"
 import { useNavigation } from "@react-navigation/native"
 import { NativeStackNavigationProp } from "@react-navigation/native-stack"
-import { RootParamList } from "../nav/RootParam"
+import { RootParamList } from "../../nav/RootParam"
 
 interface ImageItemProps{
     uri: string,
@@ -34,15 +34,15 @@ export function ImageItem({uri, includePhoto, removePhoto, photo}: ImageItemProp
             setSelected(false)
             removePhoto(photo.id)
         } else {
-            navigation.navigate('Dashboard')
+            navigation.navigate('PhotoPreview', {id: photo.id})
         }
     }
 
     return (
         <Pressable onLongPress={handleSelectedLongPress} onPress={handleSelectedPress}>
-            <View style={[imageItemStyle.container, selected && imageItemStyle.selected]}>
-                <Image source={{uri: uri}} style={imageItemStyle.image} resizeMode="cover"/>
-                {selected && <Image source={require('../assets/images/selected-icon.png')} style={imageItemStyle.icon}/>}
+            <View style={[styles.container, selected && styles.selected]}>
+                <Image source={{uri: uri}} style={styles.image} resizeMode="cover"/>
+                {selected && <Image source={require('../../assets/images/selected-icon.png')} style={styles.icon}/>}
             </View>
         </Pressable>
     )

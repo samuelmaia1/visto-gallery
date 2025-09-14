@@ -1,22 +1,17 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { SavePhotoFile, PhotoData, NewPhotoData } from "../interfaces/PhotoData";
-import RFNS from 'react-native-fs';
+import RNFS from 'react-native-fs';
 
 export async function savePhoto({path, album}: SavePhotoFile): Promise<NewPhotoData> {
-    const destinyPath = `${RFNS.DocumentDirectoryPath}/visto/gallery/${album}`
+    const destinyPath = `${RNFS.DocumentDirectoryPath}/visto/gallery/${album}`
     
-    if (!(await RFNS.exists(destinyPath)))
-        await RFNS.mkdir(destinyPath)
-
-    console.log('Destino:', destinyPath)
-    console.log('Origem:', path)
+    if (!(await RNFS.exists(destinyPath)))
+        await RNFS.mkdir(destinyPath)
 
     const fileName = `${Date.now()}.jpg`
     const newPath = `${destinyPath}/${fileName}`
 
-    console.log('Novo path: ', newPath)
-
-    await RFNS.moveFile(path, newPath)
+    await RNFS.moveFile(path, newPath)
 
     return {
         path: `${destinyPath}/${fileName}`,
@@ -41,6 +36,28 @@ export async function getPhotoById(id: string): Promise<PhotoData | undefined> {
     return photos.find(photo => photo.id === id)
 }
 
+export async function deletePhoto(id: string): Promise<void> {
+
+    const storedPhotos = await AsyncStorage.getItem('photos')
+
+    const photos: PhotoData[] = storedPhotos ? JSON.parse(storedPhotos) : []
+
+    const photoToDelete: PhotoData | undefined = photos.find(photo => photo.id === id)
+
+    if (photoToDelete) {
+        try {
+            await RNFS.unlink(replacePrefix(photoToDelete.uri))
+        } catch (err) {
+            throw new Error('Erro interno ao deletar foto')
+            
+        }
+    }
+
+    const filteredPhotos = photos.filter(photo => photo.id !== id)
+
+    await AsyncStorage.setItem('photos', JSON.stringify(filteredPhotos))
+}
+ 
 export async function getPhotosByAlbum(album: string): Promise<PhotoData[] | undefined> {
     const storedPhotos = await AsyncStorage.getItem('photos')
 
@@ -56,4 +73,8 @@ export async function getAllPhotos(): Promise<PhotoData[]> {
     const storedPhotos = await AsyncStorage.getItem('photos')
 
     return storedPhotos ? JSON.parse(storedPhotos) : []
+}
+
+function replacePrefix(path: string) {
+    return path.startsWith('file://') ? path.replace('file://', '') : path
 }

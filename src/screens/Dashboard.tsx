@@ -1,19 +1,15 @@
 import {  Text, TouchableOpacity, View } from "react-native";
 import { DashboardScreenProps } from "../nav/RootParam";
-import { Header } from "../components/Header";
+import { Header } from "../components/Header/Header";
 import { dashboardStyle } from "../styles/DashboardStyle";
 import { useCallback, useState } from "react";
 import { PhotoData } from "../interfaces/PhotoData";
 import { getAllPhotos } from "../services/PhotoService";
 import { useFocusEffect } from "@react-navigation/native";
-import { ImageList } from "../components/ImageList";
+import { ImageList } from "../components/ImageList/ImageList";
 import { ControllButtons } from "../components/ControllButtons/ControllButtons";
 
-type Props = {}
-
-type DashboardProps = DashboardScreenProps & Props
-
-export function Dashboard({navigation, route}: DashboardProps) {
+export function Dashboard({navigation, route}: DashboardScreenProps) {
 
     const [photos, setPhotos] = useState<PhotoData[]>([])
     const [step, setStep] = useState('photos')
