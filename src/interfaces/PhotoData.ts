@@ -1,7 +1,21 @@
 export interface PhotoData{
-    name: string,
+    id: string,
+    uri: string,
+    date: string,
+    hour: string,
+    longitude: number,
+    latitude: number,
+    album: string,
+    height: number,
+    width: number
+}
+
+export interface SavePhotoFile{
     path: string,
-    moment: Date,
-    longitude: string,
-    latitude: string
+    album: string
+}
+
+export interface NewPhotoData {
+    path: string,
+    id: string
 }

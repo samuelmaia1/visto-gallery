@@ -4,7 +4,9 @@ export const variables = {
     colors: {
         black: '#333',
         white: '#FFF',
-        orange: '#D7540D'
+        orange: '#D7540D',
+        red: '#DA1B1B',
+        green: '#19910F'
     },
     fonts: {
         inter: 'Inter-VariableFont_opsz,wght',

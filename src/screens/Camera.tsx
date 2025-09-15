@@ -2,10 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { View, ActivityIndicator, StyleSheet, TouchableOpacity,  Image, Alert } from "react-native";
 import { Camera, useCameraDevice } from "react-native-vision-camera";
 import { CameraScreenProps } from "../nav/RootParam";
+import { getGeoLocationPermissionStatus, requestGeoLocationPermission } from "../permissions/GeoLocationPermission";
+import { getCameraPermissionStatus, requestCameraPermission } from "../permissions/CameraPermission";
+import { NewPhotoData } from "../interfaces/PhotoData";
+import { savePhoto, savePhotoData } from "../services/PhotoService";
+import { getLocation } from "../services/LocationService";
+import { dateToPattern, getHourAndMinuteByDate } from "../format/format";
 import { cameraStyle } from "../styles/CameraStyle";
 import { variables } from "../styles/GlobalStyle";
-import { getGeoLocationPermissionStatus, openAppConfig, requestGeoLocationPermission } from "../permissions/GeoLocationPermission";
-import { getCameraPermissionStatus, requestCameraPermission } from "../permissions/CameraPermission";
 
 export function CameraScreen({navigation, route}: CameraScreenProps) {
 
@@ -17,8 +21,31 @@ export function CameraScreen({navigation, route}: CameraScreenProps) {
 
     const takePhoto = async () => {
         const photo = await camera?.current?.takePhoto()
-        if (photo)
-            setPhotoPath(photo.path)
+
+        const {album} = route.params
+
+        if (photo) {
+            const {path, height, width} = photo
+
+            const newPhoto: NewPhotoData = await savePhoto({path, album})
+            setPhotoPath(newPhoto.path)
+
+            const coords = await getLocation()
+
+            const date = new Date()
+
+            await savePhotoData({
+                album,
+                id: newPhoto.id,
+                uri: `file://${newPhoto.path}`,
+                latitude: coords.latitude,
+                longitude: coords.longitude,
+                date: dateToPattern(date),
+                hour: getHourAndMinuteByDate(date),
+                height,
+                width
+            })
+        }
     }
 
     useEffect(() => {
@@ -61,8 +88,19 @@ export function CameraScreen({navigation, route}: CameraScreenProps) {
             {hasPermissions === true &&
                 <>
                     {!device ? 
-                        <ActivityIndicator size={'small'} color={variables.colors.orange}/> : 
-                        <Camera ref={camera} isActive={true} device={device} style={StyleSheet.absoluteFill} photo={true} />
+                        <ActivityIndicator 
+                            size="large" 
+                            color={variables.colors.orange} 
+                            testID="loading-indicator" 
+                        /> : 
+                        <Camera 
+                            ref={camera} 
+                            isActive={true} 
+                            device={device} 
+                            style={StyleSheet.absoluteFill} 
+                            photo={true} 
+                            testID="camera-view"
+                        />
                     }
 
                     {photoPath ? 
@@ -74,7 +112,7 @@ export function CameraScreen({navigation, route}: CameraScreenProps) {
                         <Image source={require('../assets/images/white-camera.png')} style={cameraStyle.camImage}/>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={cameraStyle.closeCameraButton} onPress={() => navigation.navigate('Dashboard')}>
+                    <TouchableOpacity style={cameraStyle.closeCameraButton} onPress={() => navigation.goBack()}>
                         <Image source={require('../assets/images/fechar.png')} style={cameraStyle.camImage}/>
                     </TouchableOpacity>
                 </>
