@@ -36,7 +36,7 @@ export async function getPhotoById(id: string): Promise<PhotoData | undefined> {
     return photos.find(photo => photo.id === id)
 }
 
-export async function deletePhoto(id: string): Promise<void> {
+export async function deletePhoto(id: string): Promise<boolean> {
 
     const storedPhotos = await AsyncStorage.getItem('photos')
 
@@ -48,14 +48,15 @@ export async function deletePhoto(id: string): Promise<void> {
         try {
             await RNFS.unlink(replacePrefix(photoToDelete.uri))
         } catch (err) {
-            throw new Error('Erro interno ao deletar foto')
-            
+            return false
         }
     }
 
     const filteredPhotos = photos.filter(photo => photo.id !== id)
 
     await AsyncStorage.setItem('photos', JSON.stringify(filteredPhotos))
+
+    return true
 }
  
 export async function getPhotosByAlbum(album: string): Promise<PhotoData[] | undefined> {

@@ -40,5 +40,12 @@ export const styles = StyleSheet.create({
     },
     confirmButton: {
         backgroundColor: variables.colors.green
+    },
+    closeButton: {
+        padding: 10,
+        borderRadius: 8,
+        backgroundColor: variables.colors.green,
+        width: '100%',
+        alignItems: 'center'
     }
 })
