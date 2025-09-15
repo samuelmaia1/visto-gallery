@@ -32,7 +32,7 @@ export function AlbumScreen({navigation, route}: AlbumScreenProps) {
             <View style={albumStyle.dataContainer}>
                 <TouchableOpacity 
                     style={{flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 20}} 
-                    onPress={() => navigation.goBack()}
+                    onPress={() => navigation.navigate('Dashboard', {step: 'albums'})}
                 >
                     <Image source={require('../assets/images/back-icon.png')}/>
                     <Text>Voltar</Text>

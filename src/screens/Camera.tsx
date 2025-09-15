@@ -88,8 +88,19 @@ export function CameraScreen({navigation, route}: CameraScreenProps) {
             {hasPermissions === true &&
                 <>
                     {!device ? 
-                        <ActivityIndicator size={'small'} color={variables.colors.orange}/> : 
-                        <Camera ref={camera} isActive={true} device={device} style={StyleSheet.absoluteFill} photo={true} />
+                        <ActivityIndicator 
+                            size="large" 
+                            color={variables.colors.orange} 
+                            testID="loading-indicator" 
+                        /> : 
+                        <Camera 
+                            ref={camera} 
+                            isActive={true} 
+                            device={device} 
+                            style={StyleSheet.absoluteFill} 
+                            photo={true} 
+                            testID="camera-view"
+                        />
                     }
 
                     {photoPath ? 

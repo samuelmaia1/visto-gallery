@@ -25,6 +25,8 @@ export function ConfirmationModal({onConfirm, onCancel, visible, onRequestClose}
             setConfirmationStep(true)
             setFeedback('Erro interno ao deletar. Por favor, tente novamente mais tarde.')
         }
+
+        setLoading(false)
     }
 
     return (

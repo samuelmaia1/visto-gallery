@@ -44,14 +44,15 @@ export async function deletePhoto(id: string): Promise<boolean> {
 
     const photoToDelete: PhotoData | undefined = photos.find(photo => photo.id === id)
 
+    console.log(photoToDelete)
+
     if (!photoToDelete) return false
 
         const path = replacePrefix(photoToDelete.uri)
         if (path) {
             const exists = await RNFS.exists(path)
-
             if (exists) {
-                await RNFS.unlink(encodeURI(path))
+                await RNFS.unlink(path)
             } else {
                 console.warn('Arquivo não encontrado:', path)
             }

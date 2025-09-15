@@ -16,11 +16,11 @@ export function Header() {
     return (
         <View style={styles.container}>
             <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-                <Image source={require('../../assets/images/home-orange.png')}/>
+                <Image source={require('../../assets/images/home-orange-24px.png')}/>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => setVisible(true)}>
-                <Image source={require('../../assets/images/camera-orange.png')}/>
+                <Image source={require('../../assets/images/camera-orange-24px.png')}/>
             </TouchableOpacity>
 
             < NewAlbumModal visible={visible} onRequestClose={() => setVisible(false)}/>
