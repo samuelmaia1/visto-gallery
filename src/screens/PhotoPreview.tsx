@@ -27,7 +27,7 @@ export function PhotoPreviewScreen({navigation, route}: PhotoPreviewScreenProps)
                         `https://nominatim.openstreetmap.org/reverse?format=json&lat=${response.latitude}&lon=${response.longitude}`,
                         {
                             headers: {
-                                "User-Agent": "MeuAppReactNative/1.0 (seu-email@example.com)",
+                                "User-Agent": "VistoGallery",
                                 "Accept-Language": "pt-BR"
                             }
                         }
