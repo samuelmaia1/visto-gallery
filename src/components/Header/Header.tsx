@@ -3,11 +3,15 @@ import { styles } from "./HeaderStyle";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootParamList } from "../../nav/RootParam";
+import { useState } from "react";
+import { NewAlbumModal } from "../NewAlbumModal/NewAlbumModal";
 
 type Navigation = NativeStackNavigationProp<RootParamList>
 
 export function Header() {
     const navigation = useNavigation<Navigation>()
+
+    const [visible, setVisible] = useState<boolean>(false)
 
     return (
         <View style={styles.container}>
@@ -15,10 +19,11 @@ export function Header() {
                 <Image source={require('../../assets/images/home-orange.png')}/>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate('Camera', {album: 'meu-album'})}>
+            <TouchableOpacity onPress={() => setVisible(true)}>
                 <Image source={require('../../assets/images/camera-orange.png')}/>
             </TouchableOpacity>
 
+            < NewAlbumModal visible={visible} onRequestClose={() => setVisible(false)}/>
         </View>
     )
 }

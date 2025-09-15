@@ -8,6 +8,7 @@ import { getAllPhotos } from "../services/PhotoService";
 import { useFocusEffect } from "@react-navigation/native";
 import { ImageList } from "../components/ImageList/ImageList";
 import { ControllButtons } from "../components/ControllButtons/ControllButtons";
+import { AlbumsList } from "../components/AlbunsList/AlbumsList";
 
 export function Dashboard({navigation, route}: DashboardScreenProps) {
 
@@ -49,10 +50,10 @@ export function Dashboard({navigation, route}: DashboardScreenProps) {
                 </TouchableOpacity>
 
                 <TouchableOpacity 
-                    onPress={() => setStep('albuns')}
+                    onPress={() => setStep('albums')}
                 >
                     <Text 
-                        style={step === 'albuns' ? dashboardStyle.selectedStep : dashboardStyle.unselectedStep}
+                        style={step === 'albums' ? dashboardStyle.selectedStep : dashboardStyle.unselectedStep}
                     >
                         Álbuns
                     </Text>
@@ -60,6 +61,8 @@ export function Dashboard({navigation, route}: DashboardScreenProps) {
             </View>
 
             {step === 'photos' && <ImageList data={photos} includePhoto={includePhoto} removePhoto={removePhoto}/>}
+
+            {step === 'albums' && <AlbumsList/>}
 
             {selectedPhotos.length > 0 && <ControllButtons selectedPhotos={selectedPhotos}/>}
         </View> 
