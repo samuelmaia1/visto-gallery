@@ -44,13 +44,18 @@ export async function deletePhoto(id: string): Promise<boolean> {
 
     const photoToDelete: PhotoData | undefined = photos.find(photo => photo.id === id)
 
-    if (photoToDelete) {
-        try {
-            await RNFS.unlink(replacePrefix(photoToDelete.uri))
-        } catch (err) {
-            return false
+    if (!photoToDelete) return false
+
+        const path = replacePrefix(photoToDelete.uri)
+        if (path) {
+            const exists = await RNFS.exists(path)
+
+            if (exists) {
+                await RNFS.unlink(encodeURI(path))
+            } else {
+                console.warn('Arquivo não encontrado:', path)
+            }
         }
-    }
 
     const filteredPhotos = photos.filter(photo => photo.id !== id)
 
@@ -59,13 +64,16 @@ export async function deletePhoto(id: string): Promise<boolean> {
     return true
 }
  
-export async function getPhotosByAlbum(album: string): Promise<PhotoData[] | undefined> {
+export async function getPhotosByAlbum(album: string): Promise<PhotoData[]> {
     const storedPhotos = await AsyncStorage.getItem('photos')
 
     if (!storedPhotos) 
         return []
 
     const photos: PhotoData[] = JSON.parse(storedPhotos)
+
+    if (!photos)
+        return [] 
 
     return photos.filter(photo => photo.album === album)
 }

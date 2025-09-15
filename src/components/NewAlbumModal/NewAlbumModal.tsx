@@ -17,8 +17,12 @@ export function NewAlbumModal({visible, onRequestClose, ...rest}: ModalProps) {
 
     const handleCreateAlbum = async () => {
         if (name.length > 0) {
-            const album = await createAlbum(name)
-            navigation.navigate('Album', {name})
+            try {
+                const album = await createAlbum(name)
+                navigation.navigate('Album', {name})
+            } catch (error) {
+                setFeedback('Álbum com este nome já existe')
+            }
         }
         else 
             setFeedback('O nome do álbum não pode ser vazio.')

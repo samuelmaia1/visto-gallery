@@ -2,7 +2,9 @@ import {  NativeStackScreenProps } from "@react-navigation/native-stack";
 
 export type RootParamList = {
     Home: undefined,
-    Dashboard: undefined,
+    Dashboard: {
+        step: string
+    },
     Camera: {
         album: string
     },

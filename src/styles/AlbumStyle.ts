@@ -4,7 +4,6 @@ import { variables } from "./GlobalStyle";
 export const albumStyle = StyleSheet.create({
     container: {
         paddingVertical: 70,
-        paddingHorizontal: 30,
         flex: 1
     },
     title: {
@@ -18,7 +17,7 @@ export const albumStyle = StyleSheet.create({
         marginBottom: 30
     },
     newPhotoButton: {
-        backgroundColor: 'blue',
+        backgroundColor: variables.colors.orange,
         borderRadius: 8,
         padding: 8
     },
@@ -38,5 +37,8 @@ export const albumStyle = StyleSheet.create({
         borderColor: 'transparent',
         borderRadius: 10,
         overflow: 'hidden'
+    },
+    dataContainer: {
+        paddingHorizontal: 30
     }
 })

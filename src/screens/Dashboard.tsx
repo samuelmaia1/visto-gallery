@@ -4,17 +4,18 @@ import { Header } from "../components/Header/Header";
 import { dashboardStyle } from "../styles/DashboardStyle";
 import { useCallback, useState } from "react";
 import { PhotoData } from "../interfaces/PhotoData";
-import { getAllPhotos } from "../services/PhotoService";
+import { deletePhoto, getAllPhotos } from "../services/PhotoService";
 import { useFocusEffect } from "@react-navigation/native";
 import { ImageList } from "../components/ImageList/ImageList";
-import { ControllButtons } from "../components/ControllButtons/ControllButtons";
 import { AlbumsList } from "../components/AlbunsList/AlbumsList";
+import { DeleteButton } from "../components/DeleteButton/DeleteButton";
+import { ConfirmationModal } from "../components/ConfirmationModal/ConfirmationModal";
+import { ListEmptyComponent } from "../components/Utils/Utils";
 
 export function Dashboard({navigation, route}: DashboardScreenProps) {
 
     const [photos, setPhotos] = useState<PhotoData[]>([])
-    const [step, setStep] = useState('photos')
-    const [selectedPhotos, setSelectedPhotos] = useState<string[]>([])
+    const [step, setStep] = useState(route.params.step || 'photos')
 
     useFocusEffect(
         useCallback(() => {
@@ -25,14 +26,6 @@ export function Dashboard({navigation, route}: DashboardScreenProps) {
         loadPhotos()
         }, [])
     )
-
-    const includePhoto = (id: string) => {
-        setSelectedPhotos((prev) => [...prev, id])
-    }
-
-    const removePhoto = (id: string) => {
-        setSelectedPhotos((prev) => prev.filter(photo => photo !== id))
-    }
 
     return (
         <View style={dashboardStyle.container}>
@@ -60,11 +53,13 @@ export function Dashboard({navigation, route}: DashboardScreenProps) {
                 </TouchableOpacity>
             </View>
 
-            {step === 'photos' && <ImageList data={photos} includePhoto={includePhoto} removePhoto={removePhoto}/>}
+            {step === 'photos' && 
+                <>
+                    {photos.length == 0 ? <ListEmptyComponent /> : < ImageList data={photos}/>}
+                </>
+            }
 
             {step === 'albums' && <AlbumsList/>}
-
-            {selectedPhotos.length > 0 && <ControllButtons selectedPhotos={selectedPhotos}/>}
         </View> 
     )
 }

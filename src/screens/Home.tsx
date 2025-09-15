@@ -16,12 +16,12 @@ export function Home({navigation, route}: HomeScreenProps) {
             />
 
             <View style={homeStyle.buttonsContainer}>
-                <TouchableOpacity onPress={() => {navigation.navigate('Dashboard')}} style={homeStyle.button}>
+                <TouchableOpacity onPress={() => {navigation.navigate('Dashboard', {step: 'photos'})}} style={homeStyle.button}>
                     <Image source={require('../assets/images/white-camera.png')}/>
                     <Text style={homeStyle.buttonText}>Minhas fotos</Text>
                 </TouchableOpacity>
                 
-                <TouchableOpacity onPress={() => {navigation.navigate('Dashboard')}} style={homeStyle.button}>
+                <TouchableOpacity onPress={() => {navigation.navigate('Dashboard', {step: 'albums'})}} style={homeStyle.button}>
                     <Image source={require('../assets/images/white-files.png')}/>
                     <Text style={homeStyle.buttonText}>Album de fotos</Text>
                 </TouchableOpacity>

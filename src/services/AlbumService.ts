@@ -9,27 +9,15 @@ export async function createAlbum(name: string): Promise<Album> {
 
   const date = new Date()
 
-  const newAlbum: Album = { name, createdAt: dateToPattern(date), hour: getHourAndMinuteByDate(date), photosUri: [] }
+  if (await existAlbum(name)) {
+    throw new Error('Álbum com este nome já existe.')
+  }
+
+  const newAlbum: Album = { name, createdAt: dateToPattern(date), hour: getHourAndMinuteByDate(date)}
   albums.unshift(newAlbum)
 
   await AsyncStorage.setItem('albums', JSON.stringify(albums))
   return newAlbum
-}
-
-export async function addPhoto(name: string, imageUri: string) {
-    const storedAlbums = await AsyncStorage.getItem('albums')
-    const albums: Album[] = storedAlbums ? JSON.parse(storedAlbums) : []
-
-    const album: Album | undefined = albums.find(album => album.name === name)
-
-    if (album) {
-        album.photosUri.unshift(`file://${imageUri}`)
-        await AsyncStorage.setItem('albums', JSON.stringify(albums))
-    } else {
-        const newAlbum = await createAlbum(name)
-        newAlbum.photosUri.unshift(`file://${imageUri}`)
-        await AsyncStorage.setItem('albums', JSON.stringify(albums))
-    }
 }
 
 export async function loadAlbumByName(name: string): Promise<Album> {
@@ -39,8 +27,6 @@ export async function loadAlbumByName(name: string): Promise<Album> {
 
   if (!album)
     throw new Error(`Álbum "${name}" não encontrado`)
-
-  console.log(album.photosUri)
   return album
 }
 

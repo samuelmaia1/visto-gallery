@@ -1,21 +1,20 @@
-import { FlatList, View } from "react-native";
+import { FlatList, Image, View } from "react-native";
 import { PhotoData } from "../../interfaces/PhotoData";
 import { ImageItem } from "../ImageItem/ImageItem";
 import { styles } from "./ImageListStyle";
+import { Separator } from "../Utils/Utils";
 
 interface ImageListProps{
     data: PhotoData[],
-    includePhoto: (id: string) => void,
-    removePhoto: (id: string) => void
 }
 
-export function ImageList({data, includePhoto, removePhoto}: ImageListProps) {
+export function ImageList({data}: ImageListProps) {
     return (
         <FlatList
             style={styles.container}
             data={data}
             keyExtractor={(item) => item.id}
-            renderItem={({item}) => <ImageItem uri={item.uri} includePhoto={includePhoto} removePhoto={removePhoto} photo={item}/>}
+            renderItem={({item}) => <ImageItem uri={item.uri} photo={item}/>}
             numColumns={3}
             columnWrapperStyle={{gap: 10}}
             ItemSeparatorComponent={Separator}
@@ -23,6 +22,3 @@ export function ImageList({data, includePhoto, removePhoto}: ImageListProps) {
     )
 }
 
-function Separator() {
-    return <View style={{height: 10}}></View>
-}
