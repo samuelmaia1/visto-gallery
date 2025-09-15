@@ -4,9 +4,9 @@ import { variables } from "./GlobalStyle";
 
 export const styles = StyleSheet.create({
     container: {
-        paddingVertical: 70,
-        paddingHorizontal: 30,
-        flex: 1
+        flex: 1,
+        paddingTop: 70,
+        paddingHorizontal: 30
     },
     image: {
         height: 500,
@@ -18,17 +18,20 @@ export const styles = StyleSheet.create({
         color: variables.colors.orange
     },
     button: {
-        padding: 10,
-        width: '100%',
-        borderRadius: 8,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: 10
+        gap: 10,
+
+        padding: 10,
+        width: '100%',
+        borderRadius: 8,
     },
     deleteButton: {
         backgroundColor: variables.colors.red,
+
         width: '100%',
+
         position: 'absolute',
         bottom: 50,
         alignSelf: 'center'

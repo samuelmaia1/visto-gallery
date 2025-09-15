@@ -19,3 +19,13 @@ export interface NewPhotoData {
     path: string,
     id: string
 }
+
+export interface Local {
+    display_name: string,
+    address: {
+        road: string,
+        city: string,
+        state: string,
+        country: string
+    }
+}

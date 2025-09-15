@@ -3,8 +3,9 @@ import { variables } from "./GlobalStyle";
 
 export const albumStyle = StyleSheet.create({
     container: {
+        flex: 1,
+
         paddingVertical: 70,
-        flex: 1
     },
     title: {
         fontSize: 24,
@@ -14,10 +15,12 @@ export const albumStyle = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+
         marginBottom: 30
     },
     newPhotoButton: {
         backgroundColor: variables.colors.orange,
+
         borderRadius: 8,
         padding: 8
     },
@@ -36,6 +39,7 @@ export const albumStyle = StyleSheet.create({
         borderWidth: 2,
         borderColor: 'transparent',
         borderRadius: 10,
+        
         overflow: 'hidden'
     },
     dataContainer: {

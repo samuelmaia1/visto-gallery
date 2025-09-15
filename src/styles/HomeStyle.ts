@@ -14,18 +14,22 @@ export const homeStyle = StyleSheet.create({
     },
     buttonsContainer: {
         alignItems: 'center',
+
         gap: 30,
+
         paddingHorizontal: 30
     },
     button: {
-        backgroundColor: '#B52828',
-        padding: 10,
-        width: '100%',
-        borderRadius: 8,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: 10
+        gap: 10,
+
+        backgroundColor: '#B52828',
+
+        padding: 10,
+        width: '100%',
+        borderRadius: 8,
     },
     buttonText: {
         color: variables.colors.white,

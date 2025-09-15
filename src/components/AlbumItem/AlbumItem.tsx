@@ -44,7 +44,7 @@ export function AlbumItem({album}: AlbumItemProps) {
                         <Image source={{uri: photos[0]?.uri}} style={styles.image}/>
                     </View>
 
-                    <View style={styles.albumInfo}>
+                    <View>
                         <Text style={styles.title}>{album.name}</Text>
                         <Text style={styles.info}>{photos.length} Fotos</Text>
                         <Text style={styles.info}>Criado em {album.createdAt}</Text>

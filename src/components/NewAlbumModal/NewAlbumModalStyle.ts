@@ -1,30 +1,33 @@
 import { StyleSheet } from "react-native";
 import { variables } from "../../styles/GlobalStyle";
 
-
 export const styles = StyleSheet.create({
     overlay: {
             flex: 1,
-            backgroundColor: 'rgba(0,0,0,0.5)',
             justifyContent: 'center',
             alignItems: 'center',
+
+            backgroundColor: 'rgba(0,0,0,0.5)',
         },
         container: {
+            alignItems: 'center',
+            gap: 15,
+
             width: '80%',
-            backgroundColor: variables.colors.white,
             borderRadius: 12,
             padding: 20,
-            alignItems: 'center',
-            gap: 15
+
+            backgroundColor: variables.colors.white,
         },
         button: {
-            padding: 10,
-            borderRadius: 8,
+            flex: 1,
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'center',
             gap: 10,
-            flex: 1
+
+            padding: 10,
+            borderRadius: 8,
         },
         cancelButton: {
             backgroundColor: variables.colors.red
@@ -35,8 +38,9 @@ export const styles = StyleSheet.create({
         },
         buttonsContainer: {
             flexDirection: 'row',
+            gap: 10,
+
             width: '100%',
-            gap: 10
         },
         confirmButton: {
             backgroundColor: variables.colors.green
@@ -45,6 +49,7 @@ export const styles = StyleSheet.create({
             borderWidth: 2,
             borderRadius: 8,
             borderColor: 'gray',
+            
             width: '100%',
         },
 })

@@ -17,8 +17,10 @@ export const variables = {
 export const global = StyleSheet.create({
     container: {
         flex: 1,
+
         paddingHorizontal: 30,
         paddingVertical: 50,
+        
         backgroundColor: '#FFF'
     },
     text: {

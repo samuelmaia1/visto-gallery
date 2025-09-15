@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
         padding: 10,
         width: '100%',
         borderRadius: 8,
+
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
@@ -13,9 +14,9 @@ export const styles = StyleSheet.create({
     },
     deleteButton: {
         backgroundColor: variables.colors.red,
+
         width: '100%',
-        position: 'absolute',
-        bottom: 50,
+
         alignSelf: 'center'
     },
     buttonText: {
