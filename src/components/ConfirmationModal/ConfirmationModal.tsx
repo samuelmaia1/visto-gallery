@@ -39,18 +39,23 @@ export function ConfirmationModal({onConfirm, onCancel, visible, onRequestClose}
                     {!confirmationStep && 
                     <>
                         <Text>Tem certeza que deseja excluir a(s) foto(s)?</Text>
+
                         <View style={styles.buttonsContainer}>
+
                             <TouchableOpacity style={[styles.button, styles.confirmButton]} onPress={handleDeletePhoto}>
                                 {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.buttonText}>Confirmar</Text>}
                             </TouchableOpacity>
+
                             <TouchableOpacity style={[styles.button, styles.cancelButton]} onPress={onCancel}>
                                 <Text style={styles.buttonText}>Cancelar</Text>
                             </TouchableOpacity>
+
                         </View>
                     </>}
 
                     {confirmationStep && <>
                         <Text>{feedback}</Text>
+                        
                         <TouchableOpacity onPress={onRequestClose} style={styles.closeButton}>
                             <Text style={styles.buttonText}>Fechar</Text>
                         </TouchableOpacity>

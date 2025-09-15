@@ -10,6 +10,7 @@ import { getLocation } from "../services/LocationService";
 import { dateToPattern, getHourAndMinuteByDate } from "../format/format";
 import { cameraStyle } from "../styles/CameraStyle";
 import { variables } from "../styles/GlobalStyle";
+import { addPhoto } from "../services/AlbumService";
 
 export function CameraScreen({navigation, route}: CameraScreenProps) {
 
@@ -45,6 +46,8 @@ export function CameraScreen({navigation, route}: CameraScreenProps) {
                 height,
                 width
             })
+
+            await addPhoto(album, newPhoto.path)
         }
     }
 
@@ -101,7 +104,7 @@ export function CameraScreen({navigation, route}: CameraScreenProps) {
                         <Image source={require('../assets/images/white-camera.png')} style={cameraStyle.camImage}/>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={cameraStyle.closeCameraButton} onPress={() => navigation.navigate('Dashboard')}>
+                    <TouchableOpacity style={cameraStyle.closeCameraButton} onPress={() => navigation.goBack()}>
                         <Image source={require('../assets/images/fechar.png')} style={cameraStyle.camImage}/>
                     </TouchableOpacity>
                 </>

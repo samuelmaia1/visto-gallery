@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
         input: {
             borderWidth: 2,
             borderRadius: 8,
-            color: 'gray',
+            borderColor: 'gray',
             width: '100%',
         },
 })

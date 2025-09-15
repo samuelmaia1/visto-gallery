@@ -8,6 +8,9 @@ export type RootParamList = {
     },
     PhotoPreview: {
         id: string
+    },
+    Album: {
+        name: string
     }
 }
 
@@ -15,3 +18,4 @@ export type HomeScreenProps = NativeStackScreenProps<RootParamList, 'Home'>
 export type DashboardScreenProps = NativeStackScreenProps<RootParamList, 'Dashboard'> 
 export type CameraScreenProps = NativeStackScreenProps<RootParamList, 'Camera'>
 export type PhotoPreviewScreenProps = NativeStackScreenProps<RootParamList, 'PhotoPreview'>
+export type AlbumScreenProps = NativeStackScreenProps<RootParamList, 'Album'>
