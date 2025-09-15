@@ -4,7 +4,7 @@ import { Header } from "../components/Header/Header";
 import { dashboardStyle } from "../styles/DashboardStyle";
 import { useCallback, useState } from "react";
 import { PhotoData } from "../interfaces/PhotoData";
-import { deletePhoto, getAllPhotos } from "../services/PhotoService";
+import { getAllPhotos } from "../services/PhotoService";
 import { useFocusEffect } from "@react-navigation/native";
 import { ImageList } from "../components/ImageList/ImageList";
 import { AlbumsList } from "../components/AlbunsList/AlbumsList";

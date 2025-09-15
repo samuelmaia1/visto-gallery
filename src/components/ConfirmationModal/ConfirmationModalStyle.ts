@@ -5,38 +5,45 @@ import { variables } from "../../styles/GlobalStyle";
 export const styles = StyleSheet.create({
     overlay: {
         flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.5)',
         justifyContent: 'center',
         alignItems: 'center',
+
+        backgroundColor: 'rgba(0,0,0,0.5)',
     },
     container: {
         width: '80%',
-        backgroundColor: variables.colors.white,
-        borderRadius: 12,
         padding: 20,
+
+        backgroundColor: variables.colors.white,
+
+        borderRadius: 12,
+
         alignItems: 'center',
         gap: 15
     },
     button: {
-        padding: 10,
-        borderRadius: 8,
+        flex: 1,
         flexDirection: 'row',
+        padding: 10,
+        gap: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        gap: 10,
-        flex: 1
+
+        borderRadius: 8,
     },
     cancelButton: {
         backgroundColor: variables.colors.red
     },
     buttonText: {
         color: variables.colors.white,
+
         fontWeight: 'bold'
     },
     buttonsContainer: {
         flexDirection: 'row',
+        gap: 10,
+
         width: '100%',
-        gap: 10
     },
     confirmButton: {
         backgroundColor: variables.colors.green
@@ -44,8 +51,10 @@ export const styles = StyleSheet.create({
     closeButton: {
         padding: 10,
         borderRadius: 8,
-        backgroundColor: variables.colors.green,
         width: '100%',
+
+        backgroundColor: variables.colors.green,
+        
         alignItems: 'center'
     }
 })

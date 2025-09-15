@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { View, ActivityIndicator, StyleSheet, TouchableOpacity,  Image, Alert } from "react-native";
+import { View, ActivityIndicator, StyleSheet, TouchableOpacity,  Image } from "react-native";
 import { Camera, useCameraDevice } from "react-native-vision-camera";
 import { CameraScreenProps } from "../nav/RootParam";
 import { getGeoLocationPermissionStatus, requestGeoLocationPermission } from "../permissions/GeoLocationPermission";

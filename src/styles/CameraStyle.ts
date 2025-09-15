@@ -6,8 +6,10 @@ export const cameraStyle = StyleSheet.create({
     takePhotoButton: {
         position: 'absolute',
         bottom: 50,
-        backgroundColor: 'darkgreen',
         alignSelf: 'center',
+
+        backgroundColor: 'darkgreen',
+        
         padding: 20,
         borderRadius: '50%',
         width: 60,
@@ -20,12 +22,15 @@ export const cameraStyle = StyleSheet.create({
     current: {
         width: 60,
         height: 60,
+
+        borderWidth: 2,
+        borderColor: variables.colors.white,
         borderRadius: 8,
+
         position: 'absolute',
         bottom: 50,
         left: 30,
-        borderWidth: 2,
-        borderColor: variables.colors.white
+        
     },
     currentContainer: {
         backgroundColor: variables.colors.black,

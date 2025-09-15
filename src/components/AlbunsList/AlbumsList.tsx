@@ -9,14 +9,19 @@ import { ListEmptyComponent } from "../Utils/Utils";
 
 export function AlbumsList() {
     const [albums, setAlbums] = useState<Album[]>([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useFocusEffect(
         useCallback(() => {
+            setIsLoading(true)
+            
             async function getAlbums() {
                 setAlbums(await loadAlbums())
             }
 
             getAlbums()
+
+            setIsLoading(false)
         }, [])
     )
 

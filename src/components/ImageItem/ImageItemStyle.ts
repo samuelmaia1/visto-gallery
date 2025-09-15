@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: 'transparent',
         borderRadius: 10,
+        
         overflow: 'hidden'
     },
     image: {
