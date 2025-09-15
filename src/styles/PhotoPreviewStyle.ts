@@ -5,7 +5,7 @@ import { variables } from "./GlobalStyle";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 70,
+        paddingTop: 50,
         paddingHorizontal: 30
     },
     image: {
