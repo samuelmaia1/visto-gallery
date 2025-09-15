@@ -16,9 +16,7 @@ export const styles = StyleSheet.create({
         backgroundColor: variables.colors.red,
 
         width: '100%',
-        
-        position: 'absolute',
-        bottom: 50,
+
         alignSelf: 'center'
     },
     buttonText: {

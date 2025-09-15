@@ -1,14 +1,15 @@
 import { View, Text } from "react-native";
-import { PhotoData } from "../../interfaces/PhotoData";
+import { Local, PhotoData } from "../../interfaces/PhotoData";
 import { styles } from "./PhotoInfoStyle";
 
 interface PhotoInfoProps{
-    photo: PhotoData
+    photo: PhotoData,
+    local?: Local
 }
 
-export function PhotoInfo({photo}: PhotoInfoProps) {
+export function PhotoInfo({photo, local}: PhotoInfoProps) {
     return (
-        <View>
+        <View style={{gap: 10, marginBottom: 10}}>
             <Text>
                 <Text style={styles.propTitle}>Data: </Text>
                 {photo.date}
@@ -33,6 +34,16 @@ export function PhotoInfo({photo}: PhotoInfoProps) {
                 <Text style={styles.propTitle}>Álbum: </Text>
                 {photo.album}
             </Text>
+
+            {local && 
+                <>
+                    <Text>
+                        <Text style={styles.propTitle}>Localização </Text>
+                        {local.address.road}, {local.address.city}/{local.address.state} - {local.address.country}
+                    </Text>
+                </>
+            }
+            
         </View>
     )
 }

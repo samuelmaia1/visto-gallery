@@ -5,8 +5,8 @@ import { variables } from "./GlobalStyle";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingVertical: 70,
-        paddingHorizontal: 30,
+        paddingTop: 70,
+        paddingHorizontal: 30
     },
     image: {
         height: 500,
@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
         backgroundColor: variables.colors.red,
 
         width: '100%',
-        
+
         position: 'absolute',
         bottom: 50,
         alignSelf: 'center'
