@@ -8,8 +8,6 @@ import { deletePhoto, getAllPhotos } from "../services/PhotoService";
 import { useFocusEffect } from "@react-navigation/native";
 import { ImageList } from "../components/ImageList/ImageList";
 import { AlbumsList } from "../components/AlbunsList/AlbumsList";
-import { DeleteButton } from "../components/DeleteButton/DeleteButton";
-import { ConfirmationModal } from "../components/ConfirmationModal/ConfirmationModal";
 import { ListEmptyComponent } from "../components/Utils/Utils";
 
 export function Dashboard({navigation, route}: DashboardScreenProps) {

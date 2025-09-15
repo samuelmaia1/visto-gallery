@@ -15,15 +15,6 @@ export function AlbumScreen({navigation, route}: AlbumScreenProps) {
 
     const [album, setAlbum] = useState<Album>({} as Album)
     const [photos, setPhotos] = useState<PhotoData[]>([])
-    const [selectedPhotos, setSelectedPhotos] = useState<string[]>([])
-
-    const includePhoto = (id: string) => {
-        setSelectedPhotos((prev) => [...prev, id])
-    }
-
-    const removePhoto = (id: string) => {
-        setSelectedPhotos((prev) => prev.filter(photo => photo !== id))
-    }
 
     useFocusEffect(
         useCallback(() => {
@@ -67,20 +58,4 @@ export function AlbumScreen({navigation, route}: AlbumScreenProps) {
             <ImageList data={photos} />
         </View>
     )
-}
-
-interface ImageItemProps{
-    item: string
-}
-
-function ImageItem({item}: ImageItemProps) {
-    return (
-        <View style={albumStyle.imageContainer}> 
-            <Image source={{uri: item}} style={albumStyle.image}/> 
-        </View>
-    )
-}
-
-function Separator() {
-    return <View style={{height: 10}}></View>
 }
